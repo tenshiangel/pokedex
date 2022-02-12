@@ -48,12 +48,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card-img-top {
-    width: 100%;
-    height: 10rem;
-    background-image: url('https://i.pinimg.com/originals/df/4e/8b/df4e8ba28f912bf9cdf9fa0dfc196411.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.card {
+    &-title {
+        text-align: center;
+        text-transform: capitalize;
+    }
+    &-img-top {
+        width: 100%;
+        height: 10rem;
+        background-image: url('https://i.pinimg.com/originals/df/4e/8b/df4e8ba28f912bf9cdf9fa0dfc196411.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 0.8rem;
+    }
 }
 </style>
