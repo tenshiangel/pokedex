@@ -5,8 +5,9 @@
  */
 
 require('./bootstrap');
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-import router from './router';
+import { BootstrapVue, IconsPlugin, SkeletonPlugin, ToastPlugin } from 'bootstrap-vue'
+import VueRouter from 'vue-router';
+import routes from './router';
 
 window.Vue = require('vue').default;
 
@@ -25,10 +26,11 @@ window.Vue = require('vue').default;
 Vue.component('app-component', require('./components/AppComponent.vue').default);
 Vue.component('pokemon-card', require('./components/pokemon/PokemonCard.vue').default);
 
-// Make BootstrapVue available throughout your project
-Vue.use(BootstrapVue)
-// Optionally install the BootstrapVue icon components plugin
-Vue.use(IconsPlugin)
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
+Vue.use(VueRouter);
+Vue.use(SkeletonPlugin);
+Vue.use(ToastPlugin);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -38,5 +40,5 @@ Vue.use(IconsPlugin)
 
 const app = new Vue({
     el: '#app',
-    router
+    router: new VueRouter(routes),
 });

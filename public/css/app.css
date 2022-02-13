@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,500,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700);
 @charset "UTF-8";
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
@@ -11285,4 +11286,125 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+body {
+  --bs-body-font-family: "Roboto", sans-serif;
+}
+
+.capitalized {
+  text-transform: capitalize;
+}
+
+.menu-icon {
+  display: inline-block;
+  position: relative;
+  top: -0.1rem;
+  margin-right: 0.45rem;
+}
+
+.card-schedule-tags:not(.mt-0) {
+  margin-top: 0.5rem;
+}
+
+.badge {
+  width: auto;
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 1rem;
+  border: 0.035rem solid transparent;
+  text-transform: uppercase;
+  margin-bottom: 0.185rem;
+  letter-spacing: 0.125rem;
+}
+.badge:not(:last-child) {
+  margin-right: 0.25rem;
+}
+.badge-close {
+  display: inline-block;
+  position: relative;
+  top: -0.02rem;
+  margin-left: 0.12rem;
+  cursor: pointer;
+}
+.badge-tagged {
+  padding-left: 1.25rem;
+  position: relative;
+}
+.badge-tagged::before {
+  content: "•";
+  position: absolute;
+  top: 50%;
+  font-size: 2.5rem;
+  transform: translate(-125%, -50%);
+}
+.badge-bug {
+  background-color: #81b356;
+  border-color: #81b356;
+}
+.badge-dark {
+  background-color: #262625;
+  border-color: #262625;
+}
+.badge-dragon {
+  background-color: #52158f;
+  border-color: #52158f;
+}
+.badge-electric {
+  background-color: #f9c80e;
+  border-color: #f9c80e;
+}
+.badge-fairy {
+  background-color: #b347de;
+  border-color: #b347de;
+}
+.badge-fire {
+  background-color: #f86624;
+  border-color: #f86624;
+}
+.badge-fighting {
+  background-color: #ea3546;
+  border-color: #ea3546;
+}
+.badge-flying {
+  background-color: #ffb0fc;
+  border-color: #ffb0fc;
+}
+.badge-ghost {
+  background-color: #330647;
+  border-color: #330647;
+}
+.badge-grass {
+  background-color: #2b9348;
+  border-color: #2b9348;
+}
+.badge-ground {
+  background-color: #8c7d0a;
+  border-color: #8c7d0a;
+}
+.badge-ice {
+  background-color: #37c4d4;
+  border-color: #37c4d4;
+}
+.badge-normal {
+  color: #1f2327;
+  background-color: #d1d5da;
+  border-color: #d1d5da;
+}
+.badge-poison {
+  background-color: #821ce0;
+  border-color: #821ce0;
+}
+.badge-psychic {
+  background-color: #a61787;
+  border-color: #a61787;
+}
+.badge-steel {
+  background-color: #737175;
+  border-color: #737175;
+}
+.badge-water {
+  background-color: #4c8dff;
+  border-color: #4c8dff;
 }

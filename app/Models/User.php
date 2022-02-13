@@ -17,7 +17,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'birthdate',
         'email',
         'password',
     ];
@@ -40,4 +42,34 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get user's favorite Pokemon.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function favorite()
+    {
+        return $this->hasOne(Favorite::class);
+    }
+
+    /**
+     * Get user's favorite Pokemon.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function likedPokemons()
+    {
+        return $this->hasMany(LikedPokemon::class);
+    }
+
+    /**
+     * Get user's favorite Pokemon.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function hatedPokemons()
+    {
+        return $this->hasMany(HatedPokemon::class);
+    }
 }

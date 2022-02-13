@@ -1,8 +1,147 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
-// Variables
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
 @import 'variables';
-
-// Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+$grass: #2b9348;
+$electric: #f9c80e;
+$fire: #f86624;
+$fighting: #ea3546;
+$poison: #821ce0;
+$water: #4c8dff;
+$normal: #d1d5da;
+$flying: #ffb0fc;
+$bug: #81b356;
+$fairy: #b347de;
+$psychic: #a61787;
+$ghost: #330647;
+$ice: #37c4d4;
+$rock: #633618;
+$ground: #8c7d0a;
+$dark: #262625;
+$dragon: #52158f;
+$steel: #737175;
+
+body {
+    --bs-body-font-family: 'Roboto', sans-serif;
+}
+
+.capitalized { text-transform: capitalize; }
+
+.menu-icon {
+    display: inline-block;
+    position: relative;
+    top: -0.1rem;
+    margin-right: 0.45rem;
+}
+
+.card {
+    &-schedule-tags:not(.mt-0) {
+        margin-top: 0.5rem;
+    }
+}
+
+.badge {
+    width: auto;
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+	border-radius: 1rem;
+	border: 0.035rem solid transparent;
+    text-transform: uppercase;
+    margin-bottom: 0.185rem;
+    letter-spacing: 0.125rem;
+
+    &:not(:last-child) {
+        margin-right: 0.25rem;
+    }
+    &-close {
+        display: inline-block;
+        position: relative;
+        top: -0.02rem;
+        margin-left: 0.12rem;
+        cursor: pointer;
+    }
+    &-tagged {
+        padding-left: 1.25rem;
+        position: relative;
+
+        &::before {
+            content: "\2022";
+            position: absolute;
+            top: calc(50%);
+            font-size: 2.5rem;
+            transform: translate(-125%, -50%);
+        }
+    }
+    &-bug {
+        background-color: $bug;
+		border-color: $bug;
+	}
+	&-dark {
+        background-color: $dark;
+		border-color: $dark;
+	}
+    &-dragon {
+        background-color: $dragon;
+		border-color: $dragon;
+	}
+    &-electric {
+        background-color: $electric;
+		border-color: $electric;
+	}
+    &-fairy {
+        background-color: $fairy;
+		border-color: $fairy;
+	}
+	&-fire {
+        background-color: $fire;
+		border-color: $fire;
+	}
+	&-fighting {
+        background-color: $fighting;
+		border-color: $fighting;
+	}
+    &-flying {
+        background-color: $flying;
+		border-color: $flying;
+	}
+	&-ghost {
+        background-color: $ghost;
+		border-color: $ghost;
+	}
+	&-grass {
+        background-color: $grass;
+		border-color: $grass;
+	}
+    &-ground {
+        background-color: $ground;
+		border-color: $ground;
+	}
+    &-ice {
+        background-color: $ice;
+		border-color: $ice;
+	}
+    &-normal {
+		color: darken($normal, 70%);
+        background-color: $normal;
+		border-color: $normal;
+	}
+    &-poison {
+        background-color: $poison;
+		border-color: $poison;
+	}
+    &-psychic {
+        background-color: $psychic;
+		border-color: $psychic;
+	}
+    &-steel {
+        background-color: $steel;
+		border-color: $steel;
+	}
+	&-water {
+        background-color: $water;
+		border-color: $water;
+	}
+}

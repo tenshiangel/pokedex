@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\pokemon\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('favorite/set', [UserController::class, 'setFavorite'])->name('favorite.set');
+Route::get('favorite/get', [UserController::class, 'getFavorite'])->name('favorite.get');
+
+// Route::group(['middleware' => 'auth:sanctum'], function () {
+//     Route::post('favorite/set', [UserController::class, 'setFavorite'])->name('favorite.set');
+//     Route::get('favorite/get', [UserController::class, 'getFavorite'])->name('favorite.get');
+// });

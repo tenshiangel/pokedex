@@ -1,12 +1,11 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
 import AppComponent from './components/AppComponent';
 
-Vue.use(VueRouter);
-
-export default new VueRouter({
-    routes: [
-        { path: '/', component: AppComponent }
-    ],
+export default {
     mode: 'history',
-});
+    routes: [
+        {
+            path: '/',
+            component: AppComponent
+        }
+    ],
+}
