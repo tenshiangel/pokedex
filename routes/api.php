@@ -22,7 +22,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('favorite/set', [UserController::class, 'setFavorite'])->name('favorite.set');
 Route::get('favorite/get', [UserController::class, 'getFavorite'])->name('favorite.get');
 
-// Route::group(['middleware' => 'auth:sanctum'], function () {
-//     Route::post('favorite/set', [UserController::class, 'setFavorite'])->name('favorite.set');
-//     Route::get('favorite/get', [UserController::class, 'getFavorite'])->name('favorite.get');
-// });
+Route::post('likes/set', [UserController::class, 'addLikedPokemon'])->name('likes.set');
+Route::get('likes/get', [UserController::class, 'getLikedPokemon'])->name('likes.get');
+

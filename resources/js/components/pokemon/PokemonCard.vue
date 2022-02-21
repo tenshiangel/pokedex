@@ -9,7 +9,7 @@
             <b-button @click="setFavorite()" class="card-option-btn" :variant="faveStatus">
                 <b-icon-heart-fill class="card-option-icons"></b-icon-heart-fill>
             </b-button>
-            <b-button class="card-option-btn" :variant="liked ? 'success' : ''">
+            <b-button @click="setLikes()" class="card-option-btn" :variant="liked ? 'success' : ''">
                 <b-icon-emoji-smile class="card-option-icons"></b-icon-emoji-smile>
             </b-button>
             <b-button  class="card-option-btn" :variant="hated ? 'warning' : ''">
@@ -32,7 +32,7 @@
 import axios from 'axios';
 
 export default {
-    props: ["pokemonRawData", "favorite"],
+    props: ["pokemonRawData", "favorite", "likes"],
     data() {
         return {
             loading: false,
@@ -58,6 +58,15 @@ export default {
     computed: {
         faveStatus() {
             return this.favorite ? (this.favorite.url == this.pokemonRawData.url ? 'danger' : '') : '';
+        },
+        likeStatus() {
+            if (this.likes.length > 0) {
+                this.likes.forEach(element => {
+                    console.log(element);
+                });
+            }
+
+            return false;
         }
     },
     watch: {
@@ -104,27 +113,30 @@ export default {
                 }
             )
             .then(function (response) {
-                // console.log("response:", response);
-                let data = response.data.data;
-                
-                // if (response.status != 204) {
-                //     vm.toast('b-toaster-top-right', (response.status != 204 ? 'Saved as your favorite' : 'Removed from favorite'));
-                // }
-                // if (data.url == vm.pokemonRawData.url) {
-                //     vm.$parent.isFavorite();
-                // }
-                vm.toast('b-toaster-top-right', (response.status != 204 ? 'Saved as your favorite' : 'Removed from favorite'));
+                // let data = response.data.data;
                 vm.$parent.isFavorite();
             })
         },
-        toast(toaster, message) {
-            this.$bvToast.toast(message, {
-                title: 'Successfully Updated',
-                toaster: toaster,
-                solid: true,
-                appendToast: false
+        setLikes() {
+            let vm = this;
+            axios.post(
+                ROOT_API + "/likes/set",
+                {
+                    user_id: AUTH_ID,
+                    liked_pokemon_url: this.pokemonRawData.url
+                },
+                {
+                    headers: {
+                        'Access-Control-Allow-Origin': '*'
+                    }
+                }
+            )
+            .then(function (response) {
+                let data = response.data;
+                console.log(data);
+                // vm.$parent.isFavorite();
             })
-        }
+        },
     },
     mounted() {
         this.getPokemonDetails();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\pokemon;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Favorite;
 use App\Models\LikedPokemon;
 use App\Models\HatedPokemon;
@@ -13,27 +14,44 @@ use App\Http\Resources\HatedPokemonResource;
 
 class UserController extends Controller
 {
-    public function addLikedPokemon() {
+    public function addLikedPokemon(Request $request) {
+        $data = LikedPokemon::where('user_id', $request->user_id)->take(3)->get();
+        if (count($data) >= 3) {
+            $this->removeLikedPokemon($request);
+        }
+        else {
+            $liked = LikedPokemon::create($request->all());
+        }
+
+        return User::find($request->user_id)->likedPokemons;
+    }
+
+    public function removeLikedPokemon(Request $request) {
+        if ($request->type == 'new') {
+            $liked_pokemon = LikedPokemon::where('user_id', $request->user_id)->first();
+            $liked_pokemon->delete();
+        }
+        else {
+            $liked_pokemon = LikedPokemon::where('user_id', $request->user_id)->where('liked_pokemon_url', $request->liked_pokemon_url)->first();
+            $liked_pokemon->delete();
+        }
+
+        return response()->noContent();
+    }
+
+    public function getLikedPokemon(Request $request) {
         
     }
 
-    public function removeLikedPokemon() {
-
-    }
-
-    public function getLikedPokemon() {
+    public function addHatedPokemon(Request $request) {
         
     }
 
-    public function addHatedPokemon() {
+    public function removeHatedPokemon(Request $request) {
         
     }
 
-    public function removeHatedPokemon() {
-        
-    }
-
-    public function getHatedPokemon() {
+    public function getHatedPokemon(Request $request) {
         
     }
 

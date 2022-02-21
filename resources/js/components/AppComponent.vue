@@ -42,7 +42,7 @@
             </b-row>
             <b-row>
                 <b-col cols="3" v-for="(pokemon, index) in pokemons" :key="index">
-                    <pokemon-card :pokemonRawData="pokemon" :favorite="favorite"></pokemon-card>
+                    <pokemon-card :pokemonRawData="pokemon" :favorite="favorite" :likes="likes"></pokemon-card>
                 </b-col>
             </b-row>
             <!-- <b-row>
@@ -167,6 +167,27 @@ export default {
                 };
             });
         },
+        async likedPokemons() {
+            let vm = this;
+            axios.get(
+                ROOT_API + "/likes/get",
+                {
+                    params: {
+                        user_id: AUTH_ID,
+                    },
+                }
+            )
+            .then(function (response) {
+                // console.log("response:", response);
+                let data = response.data.data;
+                console.log("response.data\n", response.data);
+                console.log("let data:\n", data);
+                // vm.likes = data ? data : {
+                //     id: 0,
+                //     url: '',
+                // };
+            });
+        },
         // async isLiked() {
         //     let vm = this;
         //     axios.get(
@@ -188,6 +209,7 @@ export default {
         this.getPokemon();
         this.getPokemonTypes();
         this.isFavorite();
+        this.likedPokemons();
     }
 }
 </script>
