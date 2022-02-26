@@ -4,8 +4,13 @@ export default {
     mode: 'history',
     routes: [
         {
-            path: '/',
+            path: 'home',
+            name: 'home',
             component: AppComponent
+        },
+        {
+            path: '/',
+            component: AppComponent,
         }
     ],
 }

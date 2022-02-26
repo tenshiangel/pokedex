@@ -34,15 +34,15 @@
                     </b-media>
                 </b-col>
                 <b-col>
-                    <b-media v-if="search != ''" class="t-align-right">
-                        <h5 class="t-0 mb-0">1-20 of {{ pagination.count }}</h5>
+                    <b-media v-if="tblData.search != ''" class="t-align-right">
+                        <h5 class="t-0 mb-0">1-12 of {{ pagination.count }}</h5>
                         <p class="mb-0">Results</p>
                     </b-media>
                 </b-col>
             </b-row>
             <b-row>
-                <b-col cols="3" v-for="(pokemon, index) in pokemons" :key="index">
-                    <pokemon-card :pokemonRawData="pokemon" :favorite="favorite" :likes="likes"></pokemon-card>
+                <b-col cols="4" sm="4" md="3" v-for="(pokemon, index) in pokemons" :key="index">
+                    <pokemon-card :pokemonRawData="pokemon" :favorite="favorite" :likes="likes" :hates="hates"></pokemon-card>
                 </b-col>
             </b-row>
             <!-- <b-row>
@@ -82,7 +82,8 @@ export default {
             },
             pagination: {
                 count: 0,
-                perpage: 20,
+                perpage: 12,
+                page: 1,
                 nextPageUrl: "",
                 prevPageUrl: "",
             },
@@ -98,23 +99,24 @@ export default {
     },
     created() {
         this.delaySearch = _.debounce(this.searchPokemon, 2000);
+        this.delayLoad = _.debounce(this.getPokemonList, 2000);
     },
     watch: {
         "tblData.search": function(newVal, oldVal) {
-            if (newVal.trim() != '' && newVal.trim() != oldVal.trim()) {
+            if (! ['', undefined, null].includes(newVal.trim()) && newVal.trim() != oldVal.trim()) {
                 this.delaySearch();
             }
-            else if (newVal.trim() == '') {
-                this.getPokemon();
+            else if (['', undefined, null].includes(newVal.trim())) {
+                this.delayLoad();
             }
         },
     },
     methods: {
-        getPokemon() {
+        getPokemonList() {
             let vm = this;
             vm.pokemons = [];
 
-            axios.get('https://pokeapi.co/api/v2/pokemon')
+            axios.get('https://pokeapi.co/api/v2/pokemon?limit=12')
             .then(function (response) {
                 let data = response.data;
 
@@ -139,7 +141,7 @@ export default {
                 vm.pokemons = rawData;
             })
         },
-        getPokemonTypes() {
+        pokemonTypes() {
             let vm = this;
             axios.get('https://pokeapi.co/api/v2/type')
             .then(function (response) {
@@ -148,68 +150,22 @@ export default {
                 vm.types = data.results;
             })
         },
-        async isFavorite() {
+        async preferences() {
             let vm = this;
-            axios.get(
-                ROOT_API + "/favorite/get",
-                {
-                    params: {
-                        user_id: AUTH_ID,
-                    },
-                }
-            )
+            axios.get(ROOT_API + "/pokemon/preferences/user")
             .then(function (response) {
-                // console.log("response:", response);
                 let data = response.data.data;
-                vm.favorite = data ? data : {
-                    id: 0,
-                    url: '',
-                };
+
+                vm.favorite = data.favorite;
+                vm.likes = data.likes;
+                vm.hates = data.hates;
             });
         },
-        async likedPokemons() {
-            let vm = this;
-            axios.get(
-                ROOT_API + "/likes/get",
-                {
-                    params: {
-                        user_id: AUTH_ID,
-                    },
-                }
-            )
-            .then(function (response) {
-                // console.log("response:", response);
-                let data = response.data.data;
-                console.log("response.data\n", response.data);
-                console.log("let data:\n", data);
-                // vm.likes = data ? data : {
-                //     id: 0,
-                //     url: '',
-                // };
-            });
-        },
-        // async isLiked() {
-        //     let vm = this;
-        //     axios.get(
-        //         ROOT_API + "/favorite/get",
-        //         {
-        //             params: {
-        //                 user_id: AUTH_ID,
-        //             },
-        //         }
-        //     )
-        //     .then(function (response) {
-        //         let data = response.data;
-        //         console.log(data);
-        //         // vm.likes = data;
-        //     });
-        // },
     },
     mounted() {
-        this.getPokemon();
-        this.getPokemonTypes();
-        this.isFavorite();
-        this.likedPokemons();
+        this.getPokemonList();
+        this.pokemonTypes();
+        this.preferences();
     }
 }
 </script>
