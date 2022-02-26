@@ -15,16 +15,9 @@
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    @guest
     <script>
         const ROOT_API = '{!! env("APP_API_URL") !!}';
     </script>
-    @else
-    <script>
-        const ROOT_API = '{!! env("APP_API_URL") !!}';
-        const AUTH_ID = '{!! Auth::user()->id !!}';
-    </script>
-    @endguest
 </head>
 <body>
     <div id="app">
@@ -86,6 +79,7 @@
 
         <main class="py-4">
             @yield('content')
+            <!-- <router-view></router-view> -->
         </main>
     </div>
 </body>
