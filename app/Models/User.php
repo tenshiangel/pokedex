@@ -44,32 +44,32 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get user's favorite Pokemon.
+     * Get user's favorite Pokemon
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function favorite()
     {
-        return $this->hasOne(Favorite::class);
+        return $this->hasOne(PokemonReaction::class, 'user_id')->where('status', 'favorite');
     }
 
     /**
-     * Get user's favorite Pokemon.
+     * Get user's liked Pokemons
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function likedPokemons()
     {
-        return $this->hasMany(LikedPokemon::class);
+        return $this->hasMany(PokemonReaction::class, 'user_id')->where('status', 'like');
     }
 
     /**
-     * Get user's favorite Pokemon.
+     * Get user's hated Pokemons
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function hatedPokemons()
     {
-        return $this->hasMany(HatedPokemon::class);
+        return $this->hasMany(PokemonReaction::class, 'user_id')->where('status', 'hate');
     }
 }
