@@ -7,7 +7,7 @@
         background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
         width: 100%;
         letter-spacing: 0.25rem;
-        font-weight: 600;
+        font-weight: 600 !important;
     }
 
     &-input {
@@ -15,6 +15,10 @@
 
         &.has-icon {
             padding-left: 3.65rem !important;
+            
+            &.right {
+                padding-right: 3.65rem !important;
+            }
         }
         &.is-invalid {
             & ~ .field-inline {
@@ -23,9 +27,15 @@
         }
         & ~ .field-inline {
             top: 0.45rem;
-            left: 0.45rem;
             font-size: 2rem;
             color: #ced4da;
+
+            &.left {
+                left: 0.45rem;
+            }
+            &.right {
+                right: 0.5rem;
+            }
         }
     }
 

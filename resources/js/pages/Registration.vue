@@ -11,28 +11,35 @@
                         <h2 class="mb-4">Register</h2>
                         <b-container class="p-0 my-3">
                             <b-row>
+                                <label class="mb-2 app-form-label">Your name</label>
+                            </b-row>
+                            <b-row>
                                 <b-col cols="6">
                                     <b-form-group>
-                                        <b-form-input v-model="form.first_name" id="first_name" type="text" placeholder="Your first name" required></b-form-input>
+                                        <b-form-input v-model="form.first_name" id="first_name" type="text" placeholder="First name" required></b-form-input>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="6">
                                     <b-form-group>
-                                        <b-form-input v-model="form.last_name" id="last_name" type="text" placeholder="Your last name" required></b-form-input>
+                                        <b-form-input v-model="form.last_name" id="last_name" type="text" placeholder="Last name" required></b-form-input>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
                         </b-container>
-                        <b-form-group class="my-3">
+                        <label class="mb-2 app-form-label">Birthdate</label>
+                        <b-form-group class="mb-3">
                             <b-form-input id="birthdate" v-model="form.birthdate" type="date" placeholder="Password" required></b-form-input>
                         </b-form-group>
-                        <b-form-group class="my-3">
-                            <b-form-input v-model="form.email" id="email" type="email" placeholder="Your email" required></b-form-input>
+                        <label class="mb-2 app-form-label">Email address</label>
+                        <b-form-group class="mb-3">
+                            <b-form-input v-model="form.email" id="email" type="email" placeholder="Email address" required></b-form-input>
                         </b-form-group>
-                        <b-form-group class="my-3">
+                        <label class="mb-2 app-form-label">Password</label>
+                        <b-form-group class="mb-3">
                             <b-form-input v-model="form.password" id="password" type="password" placeholder="Password" required></b-form-input>
                         </b-form-group>
-                        <b-form-group class="my-3">
+                        <label class="mb-2 app-form-label">Confirm password</label>
+                        <b-form-group class="mb-3">
                             <b-form-input v-model="form.password_confirmation" id="password-confirm" type="password" placeholder="Confirm password" required></b-form-input>
                         </b-form-group>
 

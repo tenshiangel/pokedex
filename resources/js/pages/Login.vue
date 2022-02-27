@@ -13,7 +13,7 @@
                         <label class="mb-2 app-form-label" for="email">Email</label>
                         <b-form-group class="position-relative mb-3">
                             <b-form-input :state="emailState" v-model="form.email" id="email" type="email" class="app-form-input has-icon" placeholder="Email address" aria-describedby="email-feedback" required></b-form-input>
-                            <b-icon-at class="position-absolute field-inline"></b-icon-at>
+                            <b-icon-at class="position-absolute field-inline left"></b-icon-at>
                             <b-form-invalid-feedback id="email-feedback">
                                 This credential doesn't match to our records
                             </b-form-invalid-feedback>
@@ -21,8 +21,10 @@
 
                         <label class="mb-2 app-form-label" for="password">Password</label>
                         <b-form-group class="position-relative mb-3">
-                            <b-form-input v-model="form.password" id="password" type="password" class="app-form-input has-icon" placeholder="Password" required></b-form-input>
-                            <b-icon-key class="position-absolute field-inline"></b-icon-key>
+                            <b-form-input v-model="form.password" id="password" :type="isRevealed ? 'text' : 'password'" class="app-form-input has-icon right" placeholder="Password" required></b-form-input>
+                            <b-icon-key class="position-absolute field-inline left"></b-icon-key>
+                            <b-icon-eye-slash v-if="isRevealed" @click="reveal()" role="button" class="position-absolute field-inline right"></b-icon-eye-slash>
+                            <b-icon-eye v-else @click="reveal()" role="button" class="position-absolute field-inline right"></b-icon-eye>
                         </b-form-group>
                         <div class="row my-4">
                             <div class="col-sm-6">
@@ -44,7 +46,7 @@
 
                         <div class="alt-sign-in text-center my-4">
                             <h1 class="position-relative text-center">
-                                <span class="py-2 px-3 position-relative text-uppercase">Or sign-in via</span>
+                                <span class="py-2 px-4 position-relative text-uppercase">Or sign-in via</span>
                             </h1>
                             <span class="btn logo-sign-in p-2 d-inline-block mx-2">
                                 <b-icon-facebook class="d-block"></b-icon-facebook>
@@ -71,6 +73,7 @@
 export default {
     data() {
         return {
+            isRevealed: false,
             form: {
                 email: null,
                 password: null,
@@ -89,6 +92,9 @@ export default {
         }
     },
     methods: {
+        reveal() {
+            this.isRevealed = !this.isRevealed;
+        },
         login() {
             let vm = this;
             vm.errors = [];
