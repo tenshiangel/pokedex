@@ -1,6 +1,89 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,500,700);
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700);
 @charset "UTF-8";
+.app-form {
+  overflow: hidden;
+}
+.app-form-btn {
+  background: #7F7FD5;
+  background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+  width: 100%;
+  letter-spacing: 0.25rem;
+  font-weight: 600;
+}
+.app-form-input {
+  padding: 0.65rem 1rem !important;
+}
+.app-form-input.has-icon {
+  padding-left: 3.65rem !important;
+}
+.app-form-input.is-invalid ~ .field-inline {
+  color: #dc3545;
+}
+.app-form-input ~ .field-inline {
+  top: 0.45rem;
+  left: 0.45rem;
+  font-size: 2rem;
+  color: #ced4da;
+}
+.app-form .alt-sign-in h1, .app-form .alt-sign-in .h1 {
+  color: #5f6363;
+  overflow: hidden;
+}
+.app-form .alt-sign-in h1 span, .app-form .alt-sign-in .h1 span {
+  background-color: var(--bs-body-bg);
+  font-size: 0.8rem;
+  top: -0.4rem;
+  letter-spacing: 0.15rem;
+  z-index: 1;
+}
+.app-form .alt-sign-in h1:before, .app-form .alt-sign-in .h1:before, .app-form .alt-sign-in h1:after, .app-form .alt-sign-in .h1:after {
+  position: absolute;
+  top: 51%;
+  overflow: hidden;
+  width: 50%;
+  height: 0.5px;
+  content: " ";
+  background-color: #ced4da;
+}
+.app-form .alt-sign-in h1:before, .app-form .alt-sign-in .h1:before {
+  margin-left: -50%;
+  text-align: right;
+}
+.app-form .alt-sign-in .logo-sign-in {
+  border-radius: 50%;
+  font-size: 2rem;
+  color: #5f6363;
+}
+.app-form .at-right h2, .app-form .at-right .h2 {
+  font-size: 1.8rem;
+}
+.app-form .at-right .form-redirect-link {
+  color: #0e80fa;
+  font-weight: 600;
+  text-decoration: none;
+}
+.app-form .at-right .form-redirect-link:hover {
+  text-decoration: underline;
+}
+.app-form .at-left {
+  background-image: url("https://wallpaperaccess.com/full/7062960.jpg");
+  height: 99.9vh;
+  background-size: cover;
+  background-position: center;
+}
+.app-form .at-left::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #8D334C, #CF6964);
+  opacity: 0.5;
+}
+.app-form .at-left h2, .app-form .at-left .h2, .app-form .at-left p {
+  z-index: 1;
+}
+
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
