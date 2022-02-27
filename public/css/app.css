@@ -9,7 +9,7 @@
   background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
   width: 100%;
   letter-spacing: 0.25rem;
-  font-weight: 600;
+  font-weight: 600 !important;
 }
 .app-form-input {
   padding: 0.65rem 1rem !important;
@@ -17,14 +17,22 @@
 .app-form-input.has-icon {
   padding-left: 3.65rem !important;
 }
+.app-form-input.has-icon.right {
+  padding-right: 3.65rem !important;
+}
 .app-form-input.is-invalid ~ .field-inline {
   color: #dc3545;
 }
 .app-form-input ~ .field-inline {
   top: 0.45rem;
-  left: 0.45rem;
   font-size: 2rem;
   color: #ced4da;
+}
+.app-form-input ~ .field-inline.left {
+  left: 0.45rem;
+}
+.app-form-input ~ .field-inline.right {
+  right: 0.5rem;
 }
 .app-form .alt-sign-in h1, .app-form .alt-sign-in .h1 {
   color: #5f6363;
