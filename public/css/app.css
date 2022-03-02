@@ -63,6 +63,9 @@
   font-size: 2rem;
   color: #5f6363;
 }
+.app-form .alt-sign-in .logo-sign-in:hover {
+  color: var(--bs-body-color);
+}
 .app-form .at-right h2, .app-form .at-right .h2 {
   font-size: 1.8rem;
 }
@@ -11391,6 +11394,20 @@ body {
   position: relative;
   top: -0.1rem;
   margin-right: 0.45rem;
+}
+
+.nav-header-alt .nav-link {
+  color: rgba(255, 255, 255, 0.7);
+}
+.nav-header-alt .nav-link:hover {
+  color: white;
+}
+.nav-header-alt .nav-link .nav-icon {
+  font-size: 1.3rem;
+  display: inline-block;
+}
+.nav-header-alt .nav-link .nav-icon.with-text {
+  margin-left: 0.6rem;
 }
 
 .card-schedule-tags:not(.mt-0) {
