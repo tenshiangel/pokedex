@@ -1,7 +1,9 @@
 import Login from './pages/Login';
 import Registration from './pages/Registration';
 import Dashboard from './pages/Dashboard';
-import UserList from './pages/UserList';
+import GeneralView from './layouts/GeneralView';
+import Pokemons from './pages/dashboard/Pokemons';
+import Trainers from './pages/dashboard/Trainers';
 
 export default {
     mode: 'history',
@@ -19,12 +21,18 @@ export default {
             component: Registration
         },
         {
-            path: '/home',
-            component: Dashboard
+            path: '/dashboard',
+            component: GeneralView,
+            children: [
+                {
+                    path: 'pokemons',
+                    component: Pokemons
+                },
+                {
+                    path: 'trainers',
+                    component: Trainers
+                },
+            ]          
         },
-        {
-            path: '/users',
-            component: UserList,
-        }
     ],
 }
