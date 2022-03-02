@@ -7,20 +7,20 @@
         class="mb-2"
     >
         <b-button-group class="card-option-menu no-btn left" size="md">
-            <b-icon-heart-fill v-if="faveStatus" @click="setPokemonReaction('favorite')" role="button" v-b-tooltip.hover title="Remove as Favorite" class="card-icon-btn cursor-[opinter" variant="danger"></b-icon-heart-fill>
-            <b-icon-heart v-else @click="setPokemonReaction('favorite')" role="button" v-b-tooltip.hover title="Set as Favorite" class="card-icon-btn" variant="light"></b-icon-heart>
+            <b-icon-heart-fill v-if="faveStatus" @click="setPokemonReaction('favorite')" role="button" title="Remove as Favorite" class="card-icon-btn cursor-[opinter" variant="danger"></b-icon-heart-fill>
+            <b-icon-heart v-else @click="setPokemonReaction('favorite')" role="button" title="Set as Favorite" class="card-icon-btn" variant="light"></b-icon-heart>
         </b-button-group>
         <b-button-group class="card-option-menu right" size="md">
-            <b-button @click="setPokemonReaction('like')" class="card-option-btn" v-b-tooltip.hover title="Like this Pokemon" :variant="liked ? 'primary' : ''">
+            <b-button @click="setPokemonReaction('like')" class="card-option-btn" title="Like this Pokemon" :variant="liked ? 'primary' : ''">
                 <b-icon-emoji-smile-fill v-if="liked" class="card-option-icons" variant="light"></b-icon-emoji-smile-fill>
                 <b-icon-emoji-smile v-else class="card-option-icons" ></b-icon-emoji-smile>
             </b-button>
-            <b-button @click="setPokemonReaction('hate')" class="card-option-btn" v-b-tooltip.hover title="Hate this Pokemon" :variant="hated ? 'warning' : ''">
+            <b-button @click="setPokemonReaction('hate')" class="card-option-btn" title="Hate this Pokemon" :variant="hated ? 'warning' : ''">
                 <b-icon-emoji-frown-fill v-if="hated" class="card-option-icons" variant="dark"></b-icon-emoji-frown-fill>
                 <b-icon-emoji-frown v-else class="card-option-icons"></b-icon-emoji-frown> 
             </b-button>
         </b-button-group>
-        <b-card-title class="mb-0">{{ pokemon.name }}</b-card-title>
+        <b-card-title class="mb-2">{{ pokemon.name }}</b-card-title>
         <b-card-sub-title>Pokemon No. {{ pokemon.id }}</b-card-sub-title>
         <b-card-text class="mb-2">
             <div class="card-schedule-tags">
@@ -120,7 +120,7 @@ export default {
                 },
             )
             .then(function (response) {
-                vm.$parent.preferences();
+                vm.$parent.$parent.preferences();
             });
         },
         likeStatus() {

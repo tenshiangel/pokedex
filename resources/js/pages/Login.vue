@@ -23,8 +23,8 @@
                         <b-form-group class="position-relative mb-3">
                             <b-form-input v-model="form.password" id="password" :type="isRevealed ? 'text' : 'password'" class="app-form-input has-icon right" placeholder="Password" required></b-form-input>
                             <b-icon-key class="position-absolute field-inline left"></b-icon-key>
-                            <b-icon-eye-slash v-if="isRevealed" @click="reveal()" role="button" class="position-absolute field-inline right"></b-icon-eye-slash>
-                            <b-icon-eye v-else @click="reveal()" role="button" class="position-absolute field-inline right"></b-icon-eye>
+                            <b-icon-eye v-if="isRevealed" @click="reveal()" role="button" class="position-absolute field-inline right"></b-icon-eye>
+                            <b-icon-eye-slash v-else @click="reveal()" role="button" class="position-absolute field-inline right"></b-icon-eye-slash>
                         </b-form-group>
                         <div class="row my-4">
                             <div class="col-sm-6">
@@ -100,7 +100,9 @@ export default {
             vm.errors = [];
             axios.post(ROOT_URL + "/login", vm.form)
             .then(function (response) {
-                vm.$router.push('/home');
+                setTimeout(() => {
+                    vm.$router.push('/home');
+                }, 1500)
             })
             .catch(function (error) {
                 vm.errors = error.response.data.errors;
