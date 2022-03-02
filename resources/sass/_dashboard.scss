@@ -1,0 +1,76 @@
+.pokedex {
+    &-app {
+        &-sidebar {
+            background: linear-gradient(45deg,#8D334C,#CF6964);
+            width: 20rem;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            overflow-y: auto;
+
+            .sb {
+                &-header, &-footer {
+                    left: 0;
+                    z-index: 2;
+                }
+                &-menu {
+                    a {
+                        text-decoration: none;
+
+                        &.router-link-exact-active {
+                            .sb-menu-item {
+                                background-color: rgba(255, 255, 255, 0.8);
+                                color: #8D334C;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                    &-item {
+                        color: white;
+                        font-size: 1.2rem;
+                        border-radius: 0.4rem;
+
+                        &:hover {
+                            background-color: rgba(0, 0, 0, 0.225);
+                        }
+                        &.active {
+                            background-color: rgba(255, 255, 255, 0.8);
+                            color: #8D334C;
+                        }
+                        .b-icon {
+                            display: inline-block;
+                            top: -0.1rem;
+                            margin-right: 0.7rem;
+                            font-size: 1.7rem;
+                        }
+                    }
+                }
+                &-header {
+                    top: 0;
+
+                    img {
+                        display: block;
+                        width: 45%;
+                        margin: auto;
+                    }
+                }
+                &-footer {
+                    bottom: 0;
+                }
+            }
+        }
+        &-container {
+            width: calc(100% - 20rem);
+            margin-left: 20rem;
+
+            .nav-header{ 
+                width: inherit;
+                z-index: 90;
+            }
+        }
+
+        .scrollable-content {
+            padding: 5rem 2rem 2rem;
+        }
+    }
+}

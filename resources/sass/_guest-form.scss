@@ -2,9 +2,9 @@
     overflow: hidden;
 
     &-btn {
-        background: #7F7FD5;
-        background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
-        background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+        background: #8D334C;
+        background: -webkit-linear-gradient(45deg, #8D334C, #CF6964);
+        background: linear-gradient(45deg, #8D334C, #CF6964);
         width: 100%;
         letter-spacing: 0.25rem;
         font-weight: 600 !important;
@@ -17,7 +17,7 @@
             padding-left: 3.65rem !important;
             
             &.right {
-                padding-right: 3.65rem !important;
+                padding-right: 2.8rem !important;
             }
         }
         &.is-invalid {
@@ -34,7 +34,9 @@
                 left: 0.45rem;
             }
             &.right {
-                right: 0.5rem;
+                font-size: 1.5rem;
+                top: 0.75rem;
+                right: 0.75rem;
             }
         }
     }

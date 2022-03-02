@@ -18,6 +18,7 @@
     <script>
         const ROOT_URL = '{!! env("APP_BASE_URL") !!}';
         const ROOT_API = '{!! env("APP_API_URL") !!}';
+        const LOGO_ASSET = '{{ asset("assets/pokeapi-icon.png") }}';
     </script>
 </head>
 <body>

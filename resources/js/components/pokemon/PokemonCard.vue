@@ -29,28 +29,22 @@
         </b-card-text>
     </b-card>
 
-    <b-card v-else no-body img-top>
-        <b-skeleton-img card-img="top" class="loading" animation="wave" aspect="1:1"></b-skeleton-img>
-        <b-card-body>
-            <b-button-group class="card-option-menu no-btn left" size="md">
-                <b-icon-heart role="button" class="card-icon-btn" variant="light"></b-icon-heart>
-            </b-button-group>
-            <b-button-group class="card-option-menu right" size="md">
-                <b-button class="card-option-btn">
-                    <b-icon-emoji-smile class="card-option-icons" ></b-icon-emoji-smile>
-                </b-button>
-                <b-button class="card-option-btn">
-                    <b-icon-emoji-frown class="card-option-icons"></b-icon-emoji-frown>
-                </b-button>
-            </b-button-group>
-            <b-card-title class="mb-0">
-                <b-skeleton animation="wave" width="100%"></b-skeleton>
-            </b-card-title>
-            <b-card-sub-title>
-                <b-skeleton animation="wave" width="100%"></b-skeleton>
-            </b-card-sub-title>
-        </b-card-body>
-    </b-card>
+    <b-overlay
+        v-else
+        :show="loading"
+        variant="dark"
+        rounded
+        opacity="0.2"
+        spinner-variant="primary"
+        >
+        <b-card no-body img-top class="mb-2">
+            <b-card-img blank aspect="1:1" class="w-100" style="padding-bottom: 100%;"></b-card-img>
+            <b-card-body>
+                <b-card-title class="mb-2">&nbsp;</b-card-title>
+                <b-card-sub-title style="opacity: 0.4; font-weight: 400;">Retrieving Pokemon data...</b-card-sub-title>
+            </b-card-body>
+        </b-card>
+    </b-overlay>
 </template>
 
 <script>
@@ -120,7 +114,7 @@ export default {
                 },
             )
             .then(function (response) {
-                vm.$parent.$parent.preferences();
+                vm.$parent.preferences();
             });
         },
         likeStatus() {

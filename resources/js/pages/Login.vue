@@ -23,8 +23,7 @@
                         <b-form-group class="position-relative mb-3">
                             <b-form-input v-model="form.password" id="password" :type="isRevealed ? 'text' : 'password'" class="app-form-input has-icon right" placeholder="Password" required></b-form-input>
                             <b-icon-key class="position-absolute field-inline left"></b-icon-key>
-                            <b-icon-eye v-if="isRevealed" @click="reveal()" role="button" class="position-absolute field-inline right"></b-icon-eye>
-                            <b-icon-eye-slash v-else @click="reveal()" role="button" class="position-absolute field-inline right"></b-icon-eye-slash>
+                            <b-icon @click="reveal()" :icon="isRevealed ? 'eye' : 'eye-slash'" role="button" class="position-absolute field-inline right"></b-icon>
                         </b-form-group>
                         <div class="row my-4">
                             <div class="col-sm-6">
@@ -40,9 +39,18 @@
                             </div>
                         </div>
 
-                        <button class="btn btn-success app-form-btn shadow border-0 py-2 text-uppercase">
-                            Login
-                        </button>
+                        <b-overlay
+                            :show="loading"
+                            rounded
+                            opacity="0.4"
+                            spinner-small
+                            spinner-variant="primary"
+                            @hidden="afterLoad"
+                            >
+                            <button class="btn btn-success app-form-btn shadow border-0 py-2 text-uppercase" :disabled="loading">
+                                Login
+                            </button>
+                        </b-overlay>
 
                         <div class="alt-sign-in text-center my-4">
                             <h1 class="position-relative text-center">
@@ -74,6 +82,7 @@ export default {
     data() {
         return {
             isRevealed: false,
+            loading: false,
             form: {
                 email: null,
                 password: null,
@@ -97,16 +106,27 @@ export default {
         },
         login() {
             let vm = this;
+            
+            if (vm.loading) {
+                return;
+            }
+            
+            vm.loading = true;
             vm.errors = [];
             axios.post(ROOT_URL + "/login", vm.form)
             .then(function (response) {
                 setTimeout(() => {
-                    vm.$router.push('/home');
+                    vm.$router.push('/dashboard/pokemons');
+                    vm.loading = false;
                 }, 1500)
             })
             .catch(function (error) {
                 vm.errors = error.response.data.errors;
+                vm.loading = false;
             });
+        },
+        afterLoad() {
+            this.$refs.button.focus()
         }
     }
 }
