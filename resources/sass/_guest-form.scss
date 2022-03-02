@@ -70,6 +70,10 @@
             border-radius: 50%;
             font-size: 2rem;
             color: #5f6363;
+
+            &:hover {
+                color: var(--bs-body-color);
+            }
         }
     }
     
