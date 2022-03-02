@@ -1,8 +1,7 @@
-import AppComponent from './components/AppComponent';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
-import LandingPage from './pages/LandingPage';
-import Profile from './pages/Profile';
+import Dashboard from './pages/Dashboard';
+import UserList from './pages/UserList';
 
 export default {
     mode: 'history',
@@ -21,7 +20,11 @@ export default {
         },
         {
             path: '/home',
-            component: AppComponent
+            component: Dashboard
         },
+        {
+            path: '/users',
+            component: UserList,
+        }
     ],
 }
