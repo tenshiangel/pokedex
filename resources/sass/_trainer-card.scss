@@ -1,0 +1,60 @@
+.trainer {
+    &-card {
+        border-radius: 0.65rem !important;
+    }
+    &-icon-placeholder {
+        font-size: 4rem;
+    }
+    &-header {
+        color: #fff;
+
+        p {
+            font-size: 65%;
+        }
+        h6 {
+            font-size: 85%;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+    }
+    &-header-bracket {
+        h3 {
+            overflow: hidden;
+
+            span {
+                font-size: 0.8rem;
+                top: -0.4rem;
+                letter-spacing: 0.15rem;
+                z-index: 1;
+            }
+        }
+        h3:before, h3:after {
+            position: absolute;
+            top: 37%;
+            overflow: hidden;
+            width: 50%;
+            height: 2px;
+            content: '\a0';
+            background-color: #ced4da;
+        }
+        h3:before {
+            margin-left: -50%;
+            text-align: right;
+        }
+    }
+}
+.card-bg-skewer {
+    background: linear-gradient(to left, #6DD5FA, #2980B9);;
+    width: 43%;
+    left: -3rem;
+    border-radius: 0.6rem;
+    z-index: 1;
+
+    &.filler {
+        z-index: 0;
+        opacity: 0.3;
+        width: 46%;
+    }
+}
