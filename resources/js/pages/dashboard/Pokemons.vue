@@ -24,6 +24,7 @@
                         :show="loading"
                         rounded
                         opacity="0.4"
+                        spinner-small
                         spinner-variant="primary"
                         >
                         <div class="card card-custom-gradient py-2 shadow-sm">
@@ -67,14 +68,7 @@ export default {
                 draw: 0,
                 length: 12,
                 search: "",
-                types: [
-                    {
-                        name: "fighting",
-                    },
-                    {
-                        name: "poison",
-                    },
-                ],
+                types: [],
             },
             pagination: {
                 count: 0,
