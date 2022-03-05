@@ -1,6 +1,5 @@
 import Login from './pages/Login';
 import Registration from './pages/Registration';
-import Dashboard from './pages/Dashboard';
 import GeneralView from './layouts/GeneralView';
 import Pokemons from './pages/dashboard/Pokemons';
 import Trainers from './pages/dashboard/Trainers';
