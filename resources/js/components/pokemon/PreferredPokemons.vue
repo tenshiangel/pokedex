@@ -19,7 +19,6 @@ export default {
     data() {
         return {
             loading: true,
-            // pokemons: [],
             pokemon: {
                 id: 0,
                 name: null,
@@ -39,14 +38,6 @@ export default {
     mounted() {
         this.getPokemonImg();
     },
-    // computed: {
-    //     fillers() {
-    //         return 3 - this.pokemons.length;
-    //     },
-    //     isLoaded() {
-    //         return this.prefPokemons.length == this.pokemons.length;
-    //     }
-    // },
     methods: {
         async getPokemonImg() {
             let vm = this;
