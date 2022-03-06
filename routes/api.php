@@ -23,4 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('pokemon', PokemonReactionController::class);
 Route::post('pokemon/react', [PokemonReactionController::class, 'reaction'])->name('pokemon.react');
 Route::get('pokemon/preferences/user', [PokemonReactionController::class, 'getUserPref'])->name('pokemon.preference');
+Route::get('pokemon/preferences/list', [PokemonReactionController::class, 'prefList'])->name('pokemon.preference-list');
 

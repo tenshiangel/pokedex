@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PokemonReactionRequest;
 use App\Http\Resources\PokemonReactionResource;
@@ -142,6 +143,29 @@ class PokemonReactionController extends Controller
      */
     public function getUserPref(Request $request) {
         return new UserPokemonPreferenceResource($request->user());
+    }
+
+    /**
+     * Get the preferences from all users.
+     *
+     */
+    public function prefList()
+    {
+        $users = User::all();
+        $users->each(function ($user) {
+            $user = [
+                'preferences' => [
+                    'favorite' => new PokemonReactionResource($user->favorite),
+                    'likes' => $user->likedPokemons->each(function ($pokemon) {
+                        new PokemonReactionResource($pokemon);
+                    }),
+                    'hates' => $user->hatedPokemons->each(function ($pokemon) {
+                        new PokemonReactionResource($pokemon);
+                    }),
+                ],
+            ];
+        });
+        return $users;
     }
 
     /**

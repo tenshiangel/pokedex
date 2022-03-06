@@ -33,9 +33,19 @@ class PokemonReactionSeeder extends Seeder
                 'status' => 'like',
             ],
             [
+                'user_id' => 1,
+                'pokemon_id' => 18,
+                'status' => 'favorite',
+            ],
+            [
                 'user_id' => 2,
                 'pokemon_id' => 95,
                 'status' => 'hate',
+            ],
+            [
+                'user_id' => 2,
+                'pokemon_id' => 37,
+                'status' => 'favorite',
             ],
             [
                 'user_id' => 3,
