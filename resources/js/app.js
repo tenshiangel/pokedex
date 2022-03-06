@@ -23,6 +23,8 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('pokemon-card', require('./components/pokemon/PokemonCard.vue').default);
+Vue.component('pokemon-fave', require('./components/pokemon/PokemonFavorite.vue').default);
+Vue.component('pokemon-pref', require('./components/pokemon/PreferredPokemons.vue').default);
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
